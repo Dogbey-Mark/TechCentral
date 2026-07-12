@@ -207,7 +207,7 @@ export const Dashboard = () => {
 
 // ADMIN PRODUCTS (CRUD)
 export const AdminProducts = () => {
-  const { apiCall, formatPrice, showToast } = useAppContext();
+  const { apiCall, formatPrice, showToast, API_URL } = useAppContext();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
@@ -345,7 +345,7 @@ export const AdminProducts = () => {
 
     showToast('Uploading image to server...', 'info');
     try {
-      const response = await fetch('http://localhost:5000/api/upload', {
+      const response = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         body: formData
       });
@@ -370,7 +370,7 @@ export const AdminProducts = () => {
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch('http://localhost:5000/api/upload', {
+        const response = await fetch(`${API_URL}/upload`, {
           method: 'POST',
           body: formData
         });
@@ -395,7 +395,7 @@ export const AdminProducts = () => {
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch('http://localhost:5000/api/upload', {
+        const response = await fetch(`${API_URL}/upload`, {
           method: 'POST',
           body: formData
         });

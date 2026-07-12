@@ -24,7 +24,7 @@ export const AppProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   // Base API URL
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   // Apply Theme
   useEffect(() => {

@@ -6,7 +6,22 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const dbPath = path.resolve(process.env.DATABASE_PATH || './database.db');
+let dbDefaultPath = './database.db';
+if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+  dbDefaultPath = '/tmp/database.db';
+  const sourcePath = path.resolve('./database.db');
+  const targetPath = path.resolve(dbDefaultPath);
+  if (fs.existsSync(sourcePath) && !fs.existsSync(targetPath)) {
+    try {
+      fs.copyFileSync(sourcePath, targetPath);
+      console.log('Copied seed database to /tmp/database.db');
+    } catch (copyErr) {
+      console.error('Failed to copy seed database to /tmp', copyErr);
+    }
+  }
+}
+
+const dbPath = path.resolve(process.env.DATABASE_PATH || dbDefaultPath);
 const dbDir = path.dirname(dbPath);
 
 if (!fs.existsSync(dbDir)) {

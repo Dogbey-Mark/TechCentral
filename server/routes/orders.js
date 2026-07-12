@@ -450,10 +450,11 @@ router.post('/paystack/initialize', verifyToken, async (req, res) => {
       return res.status(500).json({ message: 'Paystack secret key is not configured.' });
     }
 
+    const clientUrl = req.get('Origin') || process.env.CLIENT_URL || 'http://localhost:5173';
     const payload = {
       email: user.email,
       amount: Math.round(total * 100), // minor unit
-      callback_url: 'http://localhost:5173/payment-gateway',
+      callback_url: `${clientUrl}/payment-gateway`,
       metadata: {
         shipping_address,
         contact_number,

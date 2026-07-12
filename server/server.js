@@ -85,8 +85,9 @@ app.post('/api/upload', (req, res) => {
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: 'No file uploaded.' });
     }
-    const file = req.files[0];
-    const fileUrl = `http://localhost:${PORT}/uploads/${file.filename}`;
+    const host = req.get('host');
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+    const fileUrl = `${protocol}://${host}/uploads/${file.filename}`;
     const isVideo = /mp4|webm|ogg|mov|avi/i.test(path.extname(file.originalname).toLowerCase());
     res.json({ 
       url: fileUrl, 
