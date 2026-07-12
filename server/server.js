@@ -25,6 +25,17 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  'https://tech-central-client-cy2runu0q-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-o9a1d164i-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-m5i34z8z6-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-rph8h808p-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-9d00m986v-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-5s0l4xevg-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-7i1809lqi-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-48t2g8p3z-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-6l73755d1-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-90z3n38s3-dogbey-marks-projects.vercel.app',
+  'https://tech-central-client-w6c1v51o1-dogbey-marks-projects.vercel.app',
   process.env.CLIENT_URL
 ].filter(Boolean);
 
